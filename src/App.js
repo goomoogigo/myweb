@@ -1,16 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import {Button, Progress} from 'semantic-ui-react'
+import {Image} from 'semantic-ui-react'
+
+import Comments from './comments.js'
+
+import ny from "./zo.jpeg"
+import 사막 from "./사막.png"
 
 function App() {
   return (
     <div>
-    <p> 고미주 </p>
-    <Button Primary> hi </Button>
-    <Progress percent = {33} indicating/>
+<Image src = {ny} centered />
+<Comments />
     </div>
-  );
+  )
 }
 
 export default App;
