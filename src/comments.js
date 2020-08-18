@@ -26,7 +26,7 @@ class Comments extends React.Component {
      super();
      this.state = {
        inputContent : "",
-       commentsList : [],
+       commentsList : []
      };
    }
 
