@@ -13,7 +13,7 @@ import {
 
 import Comments from "./comments.js";
 import Buttons from "./buttons.js";
-import ny from "./zo.jpeg";
+import snakemountain from "./snakemountain.jpeg";
 import auth from "./fb.js"
 
 var provider = new firebase.auth.GoogleAuthProvider();
@@ -27,7 +27,7 @@ class App extends React.Component{
   }
   render() {
     return (
-      <div style = {{backgroundColor : "black"}}>
+      <div style = {{backgroundColor : "DarkRed "}}>
       <br/>
 
         <Header as="h4">
@@ -110,7 +110,7 @@ class App extends React.Component{
 
         <Grid centered>
           <Grid.Row>
-            <Image src={ny} centered />
+            <Image src={snakemountain} centered />
           </Grid.Row>
           <Grid.Row>
   <Buttons/>
@@ -136,8 +136,8 @@ class App extends React.Component{
 
         <Divider horizontal>
           <Header as="h4">
-            <Icon name="microchip" />
-            Contact me!
+            <h4
+            style = {{color: "white"}}>Contact me!</h4>
           </Header>
         </Divider>
         <br/>
