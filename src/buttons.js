@@ -1,6 +1,7 @@
 import React from "react";
 import {Button} from "semantic-ui-react";
 
+import {db} from "./fb.js"
 class Buttons extends React.Component{
   constructor(){
     super()
@@ -8,7 +9,9 @@ class Buttons extends React.Component{
       likes : 0
     }
   }
-
+componentDidMount = () => {
+  db.collection("Basic").doc("m6HhpOkL8B5Jq8RZRYdV").get().then(res => this.setState({likes : res.data().likes}))
+}
   render(){
     return(     <div>  <Button
            color="red"
@@ -20,12 +23,12 @@ class Buttons extends React.Component{
             pointing: "left",
             content: this.state.likes,
         }}
-           onClick = {()=>this.setState(prevState => {
+           onClick = {()=>{this.setState(prevState => {
              return {likes :prevState.likes + 1 }
-        })}
+           },() => db.collection("Basic").doc("m6HhpOkL8B5Jq8RZRYdV").update({likes :this.state.likes}))
+        }}
       />
          <Button
-          basic
           color='blue'
           content='share'
           icon='share'

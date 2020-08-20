@@ -27,32 +27,83 @@ class App extends React.Component{
   }
   render() {
     return (
-      <div style = {{backgroundColor : "grey"}}>
+      <div style = {{backgroundColor : "black"}}>
       <br/>
 
         <Header as="h4">
-        <Icon name="quote left" style = {{color: "white", textAlign : "center"}} />
-          <h1 style= {{color: "black", textAlign : "center"}}> MOOGI.GO.BORI </h1>
-          <Icon name="quote right" style = {{color: "white", textAlign : "center"}} />
+        <Icon
+        name="quote left"
+        style = {{color: "white", Align : "center"}} />
+          <h1
+          style= {{color: "white", textAlign :"center"}}> MOOGI.GO.BORI </h1>
+          <Icon
+          name="quote right"
+          style = {{color: "white", Align : "center"}} />
         </Header>
 
-
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
         <Menu tabular>
                 <Menu.Item
                   name='bio'
+                  style = {{color: "white", textAlign : "center"}}
                 />
                 <Menu.Item
                   name='photos'
+                  style= {{color: "white", textAlign : "center"}}
                 />
+
+               <Menu.Item
+               name='Login'
+               style= {{color: "white",textAlign : "marginLeft"}}
+               onClick = {()=> {
+                 firebase
+                 .auth()
+                 .signInWithPopup(provider)
+                 .then(function(result) {
+           // This gives you a Google Access Token. You can use it to access the Google API.
+           var token = result.credential.accessToken;
+           // The signed-in user info.
+           var user = result.user;
+           return user.displayName;
+           // ...
+         })
+         .then((result) => this.setState({userName: result}))
+         .catch(function(error) {
+           // Handle Errors here.
+           var errorCode = error.code;
+           var errorMessage = error.message;
+           // The email of the user's account used.
+           var email = error.email;
+           // The firebase.auth.AuthCredential type that was used.
+           var credential = error.credential;
+           // ...
+         })
+       }}></Menu.Item>
+       <Menu.Item
+       style= {{color:"white", marginLeft: "1250px" }}>{`환영합니다,      ${this.state.userName}님.`}</Menu.Item>
               </Menu>
 
   <br/>
   <br/>
   <br/>
   <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+
+
   <Divider horizontal>
-  <p style = {{color : "black" , textAlign : "center"}}> PORTFOLIO </p>
+  <p style = {{color : "grey" , textAlign : "center"}}> PORTFOLIO </p>
     </Divider>
 
     \
@@ -66,15 +117,23 @@ class App extends React.Component{
           </Grid.Row>
           </Grid>
         <br />
+<br/>
+<br/>
+<br/>
+<br/>
 
+<br/>
+<br/>
         <Divider horizontal>
           <Header as="h4">
-            <Icon name="paper plane" style = {{color: "white"}} />
-          댓글을 남겨주세요!
+          <Icon name="paper plane" style = {{color: "white"}} />
           </Header>
         </Divider>
 
-        <Comments />
+<Grid centered columns ={3} >
+<Grid.Column>
+        <Comments userName ={this.state.userName}/></Grid.Column></Grid>
+
         <Divider horizontal>
           <Header as="h4">
             <Icon name="microchip" />
@@ -103,36 +162,7 @@ class App extends React.Component{
   <br/>
   <br/>
 
-          <Menu centered>
-         <Menu.Item>{`환영합니다,      ${this.state.userName}님.`}</Menu.Item>
-        <Menu.Item><Button primary>Sign up</Button></Menu.Item>
 
-        <Menu.Item
-        onClick = {()=> {
-          firebase
-          .auth()
-          .signInWithPopup(provider)
-          .then(function(result) {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    var token = result.credential.accessToken;
-    // The signed-in user info.
-    var user = result.user;
-    return user.displayName;
-    // ...
-  })
-  .then((result) => this.setState({userName: result}))
-  .catch(function(error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // The email of the user's account used.
-    var email = error.email;
-    // The firebase.auth.AuthCredential type that was used.
-    var credential = error.credential;
-    // ...
-  })
-  }}>Login</Menu.Item>
-      </Menu>
 
         </div>
       </div>
